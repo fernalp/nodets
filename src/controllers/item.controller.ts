@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { handleHttp } from "../helpers/error.handle"
-import { getAllCar, getCarById, insertCar, updateCar } from "../services/item.service";
+import { deleteCar, getAllCar, getCarById, insertCar, updateCar } from "../services/item.service";
 
 export const getItems = async (req: Request, res: Response) => {
     try {
@@ -56,10 +56,18 @@ export const updateItem = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteItem = async (req: Request, res: Response) => {
+export const deleteItem = async ({ params }: Request, res: Response) => {
     try {
-
+        const { id } = params;
+        const deletedItem = await deleteCar(id);
+        if (!deletedItem) {
+            res.status(400);
+            res.send({ data: "BAD_REQUEST" })
+        } else {
+            res.status(204);
+        }
     } catch (e) {
+        console.log(e);
         handleHttp(res, "ERROR_DELETE_ITEM", 500);
     }
 }
