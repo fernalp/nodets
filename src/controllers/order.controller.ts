@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { handleHttp } from "../helpers/error.handle"
-import { RequestExt } from "../types/requestext.interface";
+import { RequestExt } from "../interface/req-ext.interface";
 
 export const getItems = async (req: RequestExt, res: Response) => {
     try {

@@ -1,6 +1,6 @@
 import { Response } from "express";
 
-export const handleHttp = async (res: Response, error: string, code: number) => {
-    res.status(code | 500);
+export const handleHttp = async (res: Response, error: string, code: number = 500) => {
+    res.status(code);
     res.send({ error: error })
 }

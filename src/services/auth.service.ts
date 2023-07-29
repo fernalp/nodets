@@ -1,7 +1,7 @@
 import { UserModel } from "../models/user";
-import { User } from "../types/user.interface";
+import { User } from "../interface/user.interface";
 import { encryptPassword, verifiedPassword } from '../helpers/bcrypt.handle';
-import { Auth } from "../types/auth.interface";
+import { Auth } from "../interface/auth.interface";
 import { generateToken } from "../helpers/jwt.handle";
 
 export const createUser = async (user: User) => {
